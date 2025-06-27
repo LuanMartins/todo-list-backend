@@ -18,8 +18,8 @@ class TaskRepositoryEloquent implements TaskRepositoryInterface
     public function getPaginate(int $page = 1, string $filter = '', int $totalPerPage = 15): PaginatorInterface
     {
         $records = $this->model->where(function ($query) use ($filter) {
-            $query->orWhere('name', 'LIKE', "%{$filter}%");
-            // $query->orWhere('email', $filter);
+            $query->orWhere('title', 'LIKE', "%{$filter}%")
+                ->orWhere('description', 'LIKE', "%{$filter}%");
         })->paginate($totalPerPage, ['*'], 'page', $page);
 
         return new PaginatorEloquentAdapter($records);
