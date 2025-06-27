@@ -7,6 +7,7 @@ use App\Dtos\CreateTaskDto;
 use App\Dtos\UpdateTaskDto;
 use App\Models\Task;
 use App\Repositories\Contracts\PaginatorInterface;
+use App\Repositories\Contracts\TaskRepositoryInterface;
 
 class TaskRepositoryEloquent implements TaskRepositoryInterface
 {
@@ -31,7 +32,7 @@ class TaskRepositoryEloquent implements TaskRepositoryInterface
     }
 
 
-    public function createNew(CreateTaskDto $dto): ?object
+    public function createNew(CreateTaskDto $dto): object
     {
         return $this->model->create((array) $dto);
     }
