@@ -16,4 +16,6 @@ interface TaskRepositoryInterface
     public function edit(UpdateTaskDto $dto): ?bool;
 
     public function remove(string $id): ?bool;
+
+    public function updateStatus(string $id): ?bool;
 }

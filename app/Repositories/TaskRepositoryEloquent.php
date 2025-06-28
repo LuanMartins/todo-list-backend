@@ -54,4 +54,16 @@ class TaskRepositoryEloquent implements TaskRepositoryInterface
 
         return $task->delete($id);
     }
+
+    public function updateStatus(string $id): ?bool
+    {
+        if (! $task = $this->findById($id)) {
+            return null;
+        }
+
+        $task->finalizado = ! $task->finalizado;
+        $task->save();
+
+        return $task->finalizado;
+    }
 }

@@ -62,4 +62,17 @@ class TaskController extends Controller
 
         return ! $task ? $this->notFound() : $this->ok('Task deleted');
     }
+
+     public function toggle(string $id)
+    {
+        $updatedTask = $this->service->toggle($id);
+
+        if (is_null($updatedTask)) {
+            return $this->notFound();
+        }
+
+        $newStatusLabel = $updatedTask ? 'Activated' : 'Inactivated';
+
+        return $this->ok("Task {$newStatusLabel}");
+    }
 }

@@ -47,4 +47,9 @@ class TaskService
     {
         return $this->repository->remove($id);
     }
+
+    public function toggle(string $id): ?bool
+    {
+        return $this->repository->updateStatus($id);
+    }
 }
