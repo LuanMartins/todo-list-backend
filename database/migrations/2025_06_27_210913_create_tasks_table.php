@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao');
             $table->boolean('finalizado')->default(false);
-            $table->date('data_limite');
+            $table->dateTime('data_limite');
             $table->softDeletes();
             $table->timestamps();
         });
