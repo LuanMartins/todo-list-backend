@@ -8,11 +8,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Services\TaskService;
+use App\Traits\HttpResponseTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaskController extends Controller
 {
+    use HttpResponseTrait;
+
     public function __construct(private TaskService $service) {}
 
 
@@ -33,5 +37,12 @@ class TaskController extends Controller
         $task = $this->service->create(new CreateTaskDto(...$request->validated()));
 
         return new TaskResource($task);
+    }
+
+    public function show(string $id): JsonResource|JsonResponse
+    {
+        $task = $this->service->findById($id);
+
+        return ! $task ? $this->notFound() : new TaskResource($task);
     }
 }
