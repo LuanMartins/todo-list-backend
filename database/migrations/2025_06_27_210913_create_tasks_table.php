@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title');
-            $table->text('description');
-            $table->boolean('completed')->default(false);
+            $table->string('nome');
+            $table->text('descricao');
+            $table->boolean('finalizado')->default(false);
+            $table->date('data_limite');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
