@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Adapters\ResourcePaginatorAdapter;
 use App\Dtos\CreateTaskDto;
+use App\Dtos\UpdateTaskDto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Services\TaskService;
 use App\Traits\HttpResponseTrait;
@@ -32,7 +34,7 @@ class TaskController extends Controller
     }
 
 
-    public function create(CreateTaskRequest $request): JsonResource
+    public function store(CreateTaskRequest $request): JsonResource
     {
         $task = $this->service->create(new CreateTaskDto(...$request->validated()));
 
@@ -44,5 +46,13 @@ class TaskController extends Controller
         $task = $this->service->findById($id);
 
         return ! $task ? $this->notFound() : new TaskResource($task);
+    }
+
+
+    public function update(UpdateTaskRequest $request, string $id): JsonResponse
+    {
+        $task = $this->service->update(new UpdateTaskDto($id, ...$request->validated()));
+
+        return ! $task ? $this->notFound() : $this->ok('Task updated');
     }
 }
