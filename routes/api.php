@@ -10,7 +10,6 @@ Route::get('/user', function (Request $request) {
 
 
 Route::prefix('v1')->group(function () {
-    Route::get('/tasks', [TaskController:: class, 'index'])->name('tasks.index');
-    Route::post('/tasks', [TaskController:: class, 'create'])->name('tasks.create');
-    Route::get('/tasks/{id}', [TaskController:: class, 'show'])->name('tasks.show');
+
+    Route::apiResource('/tasks', TaskController::class);
 });
