@@ -1,14 +1,11 @@
 
-# Setup Docker Laravel 11 com PHP 8.3
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
-
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone -b laravel-12-with-php8.4 https://github.com/especializati/setup-docker-laravel.git app-laravel
+git clone -b https://github.com/LuanMartins/todo-list-backend.git todo-backend
 ```
 ```sh
-cd app-laravel
+cd todo-backend
 ```
 
 Suba os containers do projeto
@@ -50,3 +47,15 @@ php artisan migrate
 
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)
+
+Para testar o cronjob de remoção de tasks finalizadas
+
+```sh
+php artisan queue:work --tries=3 --timeout=60
+```
+
+E em outro terminal
+
+```sh
+php artisan schedule:work
+```
