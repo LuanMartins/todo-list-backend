@@ -55,4 +55,11 @@ class TaskController extends Controller
 
         return ! $task ? $this->notFound() : $this->ok('Task updated');
     }
+
+    public function destroy(string $id): JsonResponse
+    {
+        $task = $this->service->delete($id);
+
+        return ! $task ? $this->notFound() : $this->ok('Task deleted');
+    }
 }
