@@ -71,7 +71,7 @@ class TaskController extends Controller
             return $this->notFound();
         }
 
-        $newStatusLabel = $updatedTask ? 'Activated' : 'Inactivated';
+        $newStatusLabel = $updatedTask ? 'Completed' : 'not completed';
 
         return $this->ok("Task {$newStatusLabel}");
     }
