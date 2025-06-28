@@ -8,6 +8,7 @@ use App\Dtos\UpdateTaskDto;
 use App\Models\Task;
 use App\Repositories\Contracts\PaginatorInterface;
 use App\Repositories\Contracts\TaskRepositoryInterface;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class TaskRepositoryEloquent implements TaskRepositoryInterface
 {
@@ -23,6 +24,11 @@ class TaskRepositoryEloquent implements TaskRepositoryInterface
         })->paginate($totalPerPage, ['*'], 'page', $page);
 
         return new PaginatorEloquentAdapter($records);
+    }
+
+    public function getAllFinished(): Builder
+    {
+        return $this->model->where('finalizado', true);
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Repositories\Contracts;
 
 use App\Dtos\CreateTaskDto;
 use App\Dtos\UpdateTaskDto;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 interface TaskRepositoryInterface
 {
@@ -18,4 +19,6 @@ interface TaskRepositoryInterface
     public function remove(string $id): ?bool;
 
     public function updateStatus(string $id): ?bool;
+
+    public function getAllFinished(): Builder;
 }
