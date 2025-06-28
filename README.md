@@ -2,7 +2,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone -b https://github.com/LuanMartins/todo-list-backend.git todo-backend
+git clone https://github.com/LuanMartins/todo-list-backend.git
 ```
 ```sh
 cd todo-backend
@@ -37,7 +37,7 @@ php artisan key:generate
 
 OPCIONAL: Gere o banco SQLite (caso não use o banco MySQL)
 ```sh
-touch database/database.sqlite
+touch database/todo.sqlite
 ```
 
 Rodar as migrations
