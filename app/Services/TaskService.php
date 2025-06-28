@@ -52,4 +52,9 @@ class TaskService
     {
         return $this->repository->updateStatus($id);
     }
+
+    public function deleteAllFinisheds(): int
+    {
+        return $this->repository->removeAllFinisheds();
+    }
 }

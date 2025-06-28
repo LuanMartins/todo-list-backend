@@ -26,9 +26,9 @@ class TaskRepositoryEloquent implements TaskRepositoryInterface
         return new PaginatorEloquentAdapter($records);
     }
 
-    public function getAllFinished(): Builder
+    public function removeAllFinisheds(): int
     {
-        return $this->model->where('finalizado', true);
+        return $this->model->where('finalizado', true)->delete();
     }
 
 

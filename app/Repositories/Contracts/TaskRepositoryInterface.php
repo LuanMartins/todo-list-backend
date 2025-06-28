@@ -20,5 +20,5 @@ interface TaskRepositoryInterface
 
     public function updateStatus(string $id): ?bool;
 
-    public function getAllFinished(): Builder;
+    public function removeAllFinisheds(): int;
 }
