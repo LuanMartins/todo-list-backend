@@ -27,6 +27,11 @@ class TaskService
     }
 
 
+    public function findById(string $id): ?object
+    {
+        return $this->repository->findById($id);
+    }
+
     public function create(CreateTaskDto $dto): ?object
     {
         return $this->repository->createNew($dto);
