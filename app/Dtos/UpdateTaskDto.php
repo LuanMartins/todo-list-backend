@@ -9,8 +9,9 @@ readonly class UpdateTaskDto
      */
     public function __construct(
         public string $id,
-        public string $title,
-        public string $description,
-        public bool $completed
+        public string $nome,
+        public string $descricao,
+        public string $data_limite,
+        public bool $finalizado,
     ) {}
 }
