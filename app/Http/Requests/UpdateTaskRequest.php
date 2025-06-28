@@ -10,7 +10,7 @@ class UpdateTaskRequest extends CreateTaskRequest
     public function rules(): array
     {
         $rules = parent::rules();
-        $rules['completed'] = ['required', 'boolean'];
+        $rules['finalizado'] = ['boolean'];
         
 
         return $rules;
